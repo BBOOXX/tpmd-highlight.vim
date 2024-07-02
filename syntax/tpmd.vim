@@ -20,16 +20,16 @@ syn match tpmdKeyword "`PATCH`"
 hi def link tpmdTitle Title
 hi def link tpmdKeyword Keyword
 
-syn region tpmdCodeBlock start="^\s*```\s*$" end="^\s*```\s*$" contains=tpmdKey keepend fold
+syn region tpmdCodeBlock start="^\s*```\s*$" end="^\s*```\s*$" contains=tpmdKey keepend
 
-syn match tpmdKey /\v(\w|\[|\]|\{|\}|'|")*\ze\s*(\=|:|\/\/)/   nextgroup=tpmdAssignOp,tpmdCommentTag contained oneline
-syn match tpmdAssignOp /\v(\=\=|\=|:)/                         nextgroup=tpmdValue  contained oneline
-syn match tpmdValue /[a-zA-Z0-9_'" ]\+/                        nextgroup=tpmdCommentTag contained oneline
-syn match tpmdCommentTag "//"                                  nextgroup=tpmdMandatoryTag,tpmdType contained oneline
-syn match tpmdMandatoryTag /\s*\*\?/                           nextgroup=tpmdGroupTag contained oneline
-syn match tpmdGroupTag /\v(\~|[0-9]+)?/                        nextgroup=tpmdGroupDuty contained oneline
-syn match tpmdGroupDuty /[+-]\?/                               nextgroup=tpmdType contained oneline
-syn match tpmdType /\v\s+(str|int)\s+/ contained oneline
+syn match tpmdKey /\v(\w|\[|\]|\{|\}|'|"|\.)*\ze\s*(\=|:|\/\/)/ nextgroup=tpmdAssignOp,tpmdCommentTag contained
+syn match tpmdAssignOp /\v(\=\=|\=|:)/                          nextgroup=tpmdValue                   contained
+syn match tpmdValue /[a-zA-Z0-9_'" ]\+/                         nextgroup=tpmdCommentTag              contained
+syn match tpmdCommentTag "\(//\|#\)"                            nextgroup=tpmdMandatoryTag,tpmdType   contained
+syn match tpmdMandatoryTag /\s*\*\?/                            nextgroup=tpmdGroupTag                contained
+syn match tpmdGroupTag /\v(\~|[0-9]+)?/                         nextgroup=tpmdGroupDuty               contained
+syn match tpmdGroupDuty /[+-]\?/                                nextgroup=tpmdType                    contained
+syn match tpmdType /\v\s+(str|int)\s*/                                                                contained
 
 hi def link tpmdCodeBlock    Comment
 hi def link tpmdKey          NONE
