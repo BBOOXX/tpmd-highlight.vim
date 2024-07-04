@@ -28,7 +28,7 @@ syn match tpmdValue /[a-zA-Z0-9_'" ]\+/                         nextgroup=tpmdCo
 syn match tpmdCommentTag "\(//\|#\)"                            nextgroup=tpmdMandatoryTag,tpmdType   contained
 syn match tpmdMandatoryTag /\s*\*\?/                            nextgroup=tpmdGroupTag                contained
 syn match tpmdGroupTag /\v(\~|[0-9]+)?/                         nextgroup=tpmdGroupDuty               contained
-syn match tpmdGroupDuty /[+-]\?/                                nextgroup=tpmdType                    contained
+syn match tpmdGroupDuty /[+-]\?/                                nextgroup=tpmdType,tpmdGroupTag       contained
 syn match tpmdType /\v\s+(str|int|list|dict|\[\]|\{\})\s*/                                            contained
 
 hi def link tpmdCodeBlock    Comment
